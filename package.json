@@ -1,0 +1,10 @@
+{
+  "name": "project-boilerplate",
+  "version": "0.0.0",
+  "description": "Node Boilerplate",
+  "author": "David Woolf <davidjohnwoolf@gmail.com>",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
