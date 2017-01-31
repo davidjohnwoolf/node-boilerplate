@@ -5,6 +5,7 @@
   "author": "David Woolf <davidjohnwoolf@gmail.com>",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.1"
   }
 }
