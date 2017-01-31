@@ -1,5 +1,4 @@
-let express = require('express');
-let app = express();
+let app = require('express')();
 
 let port = process.env.PORT || 1349;
 
