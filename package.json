@@ -1,12 +1,16 @@
 {
-    "name": "project-boilerplate",
-    "version": "0.0.0",
-    "description": "Node Boilerplate",
-    "author": "David Woolf <davidjohnwoolf@gmail.com>",
-    "main": "app.js",
-    "dependencies": {
-        "body-parser": "^1.16.0",
-        "express": "^4.14.1",
-        "mongoose": "^4.8.1"
-    }
+  "name": "project-boilerplate",
+  "version": "0.0.0",
+  "description": "Node Boilerplate",
+  "author": "David Woolf <davidjohnwoolf@gmail.com>",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
 }
