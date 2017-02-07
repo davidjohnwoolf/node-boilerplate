@@ -10,3 +10,5 @@ body {
   background: #fff;
   border: #666;
   padding: 0 1%; }
+  #app h1 {
+    font-family: 'Futura', sans-serif; }
