@@ -6,7 +6,7 @@ let bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-//index
+//list
 router.get('/task', (req, res) => {
     Task.find((err, tasks) => {
         if (err) return res.json(err);
@@ -28,6 +28,21 @@ router.post('/task', (req, res) => {
         if (err) res.json(err);
 
         res.json({ message: 'Task created!' });
+    });
+});
+
+//update
+router.put('/task/:id', (req, res) => {
+    Task.findOne({ _id: req.params.id }, (err, task) => {
+        if (err) return res.json(err);
+
+        for (var prop in req.body) task[prop] = req.body[prop];
+
+        task.save((err) => {
+            if (err) res.json(err);
+
+            res.json({ message: 'Task Updated!' });
+        });
     });
 });
 
