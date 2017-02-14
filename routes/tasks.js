@@ -1,5 +1,5 @@
 let router = require('express').Router();
-var Task = require('../models/task');
+let Task = require('../models/task');
 let bodyParser = require('body-parser');
 
 //bodyParser middleware
@@ -36,7 +36,7 @@ router.put('/task/:id', (req, res) => {
     Task.findOne({ _id: req.params.id }, (err, task) => {
         if (err) return res.json(err);
 
-        for (var prop in req.body) task[prop] = req.body[prop];
+        for (let prop in req.body) task[prop] = req.body[prop];
 
         task.save((err) => {
             if (err) res.json(err);
@@ -53,6 +53,10 @@ router.get('/task/:id', (req, res) => {
 
         res.json(task);
     });
+});
+
+router.delete('/task/:id', (req, res) => {
+    //delete item
 });
 
 module.exports = router;
