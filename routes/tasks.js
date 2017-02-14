@@ -27,7 +27,7 @@ router.post('/task', (req, res) => {
     task.save((err) => {
         if (err) res.json(err);
 
-        res.json({ message: 'Task created!' });
+        res.json({ message: 'Task created' });
     });
 });
 
@@ -41,7 +41,7 @@ router.put('/task/:id', (req, res) => {
         task.save((err) => {
             if (err) res.json(err);
 
-            res.json({ message: 'Task Updated!' });
+            res.json({ message: 'Task Updated' });
         });
     });
 });
