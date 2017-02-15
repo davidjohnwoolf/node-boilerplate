@@ -27,7 +27,7 @@ router.post('/task', (req, res) => {
     task.save((err) => {
         if (err) res.json(err);
 
-        res.json({ message: 'Task created' });
+        res.json({ message: 'Task Created' });
     });
 });
 
