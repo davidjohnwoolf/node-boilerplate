@@ -55,7 +55,7 @@ router.get('/task/:id', (req, res) => {
     });
 });
 
-//delete
+//destroy
 router.delete('/task/:id', (req, res) => {
     Task.findOne({ _id: req.params.id }, (err, task) => {
         if (err) res.json(err);
