@@ -60,7 +60,11 @@ router.delete('/task/:id', (req, res) => {
     Task.findOne({ _id: req.params.id }, (err, task) => {
         if (err) res.json(err);
 
-        task.remove((err) => res.json({ message: 'Task Removed' }));
+        task.remove((err) => {
+            if (err) res.json(err);
+
+            res.json({ message: 'Task Removed' })
+        });
     });
 });
 
