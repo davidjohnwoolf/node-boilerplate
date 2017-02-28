@@ -24,10 +24,10 @@ router.post('/task', (req, res) => {
     });
 
     // save the bear and check for errors
-    task.save((err) => {
+    task.save((err, task) => {
         if (err) res.json(err);
 
-        res.json({ message: 'Task Created' });
+        res.json({ message: 'Task Created', task });
     });
 });
 
@@ -38,10 +38,10 @@ router.put('/task/:id', (req, res) => {
 
         for (let prop in req.body) task[prop] = req.body[prop];
 
-        task.save((err) => {
+        task.save((err, task) => {
             if (err) res.json(err);
 
-            res.json({ message: 'Task Updated' });
+            res.json({ message: 'Task Updated', task });
         });
     });
 });
