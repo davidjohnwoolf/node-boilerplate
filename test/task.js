@@ -30,10 +30,11 @@ describe('tasks', () => {
     describe('post /task', () => {
         it('should create a task', (done) => {
             let task = {
-                title: 'Capital',
+                title: 'Read Capital',
                 description: 'An analysis of capitalism',
                 dueDate: 'June 2018'
-            }
+            };
+            
             chai.request(app)
                 .post('/task')
                 .send(task)
