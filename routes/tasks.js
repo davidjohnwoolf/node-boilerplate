@@ -25,7 +25,7 @@ router.post('/task', (req, res) => {
 
     // save the bear and check for errors
     task.save((err, task) => {
-        if (err) res.json(err);
+        if (err) return res.json(err);
 
         res.json({ message: 'Task Created', task });
     });
@@ -39,7 +39,7 @@ router.put('/task/:id', (req, res) => {
         for (let prop in req.body) task[prop] = req.body[prop];
 
         task.save((err, task) => {
-            if (err) res.json(err);
+            if (err) return res.json(err);
 
             res.json({ message: 'Task Updated', task });
         });
@@ -58,10 +58,10 @@ router.get('/task/:id', (req, res) => {
 //destroy
 router.delete('/task/:id', (req, res) => {
     Task.findOne({ _id: req.params.id }, (err, task) => {
-        if (err) res.json(err);
+        if (err) return res.json(err);
 
         task.remove((err) => {
-            if (err) res.json(err);
+            if (err) return res.json(err);
 
             res.json({ message: 'Task Removed' })
         });
