@@ -28,6 +28,25 @@ describe('tasks', () => {
     });
 
     describe('post /task', () => {
+        it('should throw a required field error', (done) => {
+            let task = {
+                title: 'Read Capital',
+                dueDate: 'June 2018'
+            };
+
+            chai.request(app)
+                .post('/task')
+                .send(task)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('errors');
+                    res.body.errors.description.should.have
+                        .property('kind').eql('required');
+                    done();
+                });
+        });
+
         it('should create a task', (done) => {
             let task = {
                 title: 'Read Capital',
@@ -42,7 +61,7 @@ describe('tasks', () => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('message');
-                    res.body.should.not.have.property('error');
+                    res.body.should.not.have.property('errors');
                     done();
                 });
         });
@@ -63,7 +82,8 @@ describe('tasks', () => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');
                         res.body.should.have.property('title');
-                        res.body.should.not.have.property('error');
+                        res.body.should.not.have.property('errors');
+                        res.body.should.have.property('_id').eql(task.id);
                         done();
                     });
             });
