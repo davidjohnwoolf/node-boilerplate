@@ -8,5 +8,9 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 describe('tasks', () => {
-    //tests
+    beforeEach((done) => {
+        Task.remove({}, (err) => {
+           done();
+        });
+    });
 });
