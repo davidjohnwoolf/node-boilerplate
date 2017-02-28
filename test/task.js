@@ -31,10 +31,10 @@ describe('tasks', () => {
         it('should create a task', (done) => {
             let task = {
                 title: 'Read Capital',
-                description: 'An analysis of capitalism',
+                description: 'Read Marx\'s analysis of capitalism',
                 dueDate: 'June 2018'
             };
-            
+
             chai.request(app)
                 .post('/task')
                 .send(task)
@@ -45,6 +45,28 @@ describe('tasks', () => {
                     res.body.should.not.have.property('error');
                     done();
                 });
+        });
+    });
+
+    describe('get /task/:id', () => {
+        it('should get a single task', (done) => {
+            let task = new Task({
+                title: 'Clean Car',
+                description: 'Clean out and vaccum car',
+                dueDate: 'March 2017'
+            });
+
+            task.save((err, task) => {
+                chai.request(app)
+                    .get('/task/' + task.id)
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('title');
+                        res.body.should.not.have.property('error');
+                        done();
+                    });
+            });
         });
     });
 });
